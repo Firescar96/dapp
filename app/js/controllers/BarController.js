@@ -1,6 +1,6 @@
 (function(){
 
-angular.module('app').controller('BarController',function($scope,helpers,Submarket,Store){
+angular.module('app').controller('BarController',function($scope,helpers,AliasReg,Submarket,Store){
 	$scope.submit = function(){
 		var alias = $scope.alias
 			,addr = AliasReg.getAddr(alias)
