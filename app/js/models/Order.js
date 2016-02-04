@@ -375,7 +375,10 @@ function Update(sender,status,timestamp,order){
 }
 
 Message.prototype.decrypt = function(privateKey){
-	this.text = this.pgpMessage.decrypt(privateKey).packets[0].data
+  console.log(this);
+  var cipherPgpMessageWrapper = new PgpMessageWrapper(this.ciphertext)
+  user.decrypt(cipherPgpMessageWrapper)
+	this.text = cipherPgpMessageWrapper.text
 }
 
 Update.prototype.isUpdate = true

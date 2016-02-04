@@ -9,7 +9,6 @@ it('should bootstrap',function(){
 })
 
 describe('account reset', function() {
-
     it('should have a button in the settigns menu', function() {
         element(by.css('[ng-click="openSettingsModal()"]')).click();
         var resetButtonPresence = element(by.css('[ng-click="reset()"]')).isPresent();

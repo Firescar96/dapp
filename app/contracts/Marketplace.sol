@@ -176,6 +176,7 @@ contract OrderBook{
     uint public affiliateAmount;
     uint public affiliatePercentage;
     uint public receivedAtBlockNumber;
+    uint public lastWithdrawlBlockNumber;
 
     event Meta(bytes meta);
     event Message(address indexed sender, bytes text);
@@ -239,6 +240,7 @@ contract OrderBook{
 
         if(isSent){
           receivedAtBlockNumber = block.number;
+          lastWithdrawlBlockNumber = block.number;
           received -= amount;
         }
       }
@@ -271,7 +273,7 @@ contract OrderBook{
         throw;
 
         //don't allow to mark as shipped on same block that a withdrawl is made
-        if(receivedAtBlockNumber == block.number)
+        if(lastWithdrawlBlockNumber == block.number)
         throw;
 
         shippedAt = now;

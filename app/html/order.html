@@ -188,11 +188,11 @@
 				<span ng-show="messageOrUpdate.isUpdate">Update:</span>
 			</td>
 			<td>
-				<div ng-show="messageOrUpdate.messageArmored">
+				<div ng-show="messageOrUpdate.isMessage">
 					<div ng-show="messageOrUpdate.text">{{messageOrUpdate.text}}</div>
 					<pre ng-show="!messageOrUpdate.text">{{messageOrUpdate.messageArmored}}</pre>
 				</div>
-				<div ng-show="messageOrUpdate.status">
+				<div ng-show="messageOrUpdate.isUpdate">
 					{{messageOrUpdate.from | capitalize}} has marked the order as {{messageOrUpdate.status | status | lowercase}}
 				</div>
 			</td>

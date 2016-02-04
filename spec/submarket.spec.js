@@ -23,6 +23,14 @@ describe('submarket modal',function(){
         element(by.css('[ng-model="info"]')).sendKeys('The best drinks on the interweb')
         element(by.css('[ng-click="submit()"]')).click()
         element(by.css('[ng-click="approve()"]')).click()
+        browser.wait(function() {
+          var deferred = protractor.promise.defer();
+          element(by.css('[src="images/balls.gif"]')).isDisplayed()
+          .then(function (isDisplayed) {
+            deferred.fulfill(!isDisplayed);
+          });
+          return deferred.promise;
+        })
         element(by.css('[ng-href*="#/submarkets/"]')).click()
         element(by.css('h1')).getText().then(function(text){
             expect(text.indexOf('The Drink Submarket')).toNotEqual(-1)
